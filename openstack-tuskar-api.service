@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenStack Tuskar API service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/tuskar-api
+
+[Install]
+WantedBy=multi-user.target
