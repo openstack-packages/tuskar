@@ -1,6 +1,6 @@
 Name:	      openstack-tuskar
-Version:	  0.2.2
-Release:	  3%{?dist}
+Version:	  0.2.3
+Release:	  1%{?dist}
 Summary:	  A service for managing OpenStack deployments
 
 Group:		  Applications/System
@@ -113,6 +113,9 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Fri Apr 04 2014 Jordan OMara <jomara@redhat.com> 0.2.3-1
+- new source 0.2.3 (jomara@redhat.com)
+
 * Thu Apr 03 2014 Jordan OMara <jomara@redhat.com> 0.2.2-3
 - remove wsgi, add post/preun/postun runs for systemctl
 - misc cleanup from additional reviews (jomara@redhat.com)
