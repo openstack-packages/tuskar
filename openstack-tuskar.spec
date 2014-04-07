@@ -1,6 +1,6 @@
 Name:	      openstack-tuskar
 Version:	  0.2.3
-Release:	  1%{?dist}
+Release:	  2%{?dist}
 Summary:	  A service for managing OpenStack deployments
 
 Group:		  Applications/System
@@ -32,7 +32,8 @@ Requires: python-flask
 Requires: python-flask-babel
 Requires: python-pecan
 Requires: python-wsme
-Requires: python-six >= 1.4.0
+Requires: python-six >= 1.5.2
+Requires: python-posix_ipc
 Requires: PyYAML
 Requires: python-oslo-config
 Requires: python-novaclient
@@ -113,6 +114,9 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Mon Apr 07 2014 Jordan OMara <jomara@redhat.com> 0.2.3-2
+- adding python-six & python-posix_ipc dep (jomara@redhat.com)
+
 * Fri Apr 04 2014 Jordan OMara <jomara@redhat.com> 0.2.3-1
 - new source 0.2.3 (jomara@redhat.com)
 
