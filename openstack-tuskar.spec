@@ -1,6 +1,6 @@
 Name:	      openstack-tuskar
-Version:	  0.2.3
-Release:	  2%{?dist}
+Version:	  0.3.0
+Release:	  1%{?dist}
 Summary:	  A service for managing OpenStack deployments
 
 Group:		  Applications/System
@@ -114,6 +114,9 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.0-1
+- new source 0.3.0 (jomara@redhat.com)
+
 * Mon Apr 07 2014 Jordan OMara <jomara@redhat.com> 0.2.3-2
 - adding python-six & python-posix_ipc dep (jomara@redhat.com)
 
