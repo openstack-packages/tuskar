@@ -1,5 +1,5 @@
 Name:	      openstack-tuskar
-Version:	  0.3.0
+Version:	  0.3.1
 Release:	  1%{?dist}
 Summary:	  A service for managing OpenStack deployments
 
@@ -8,6 +8,8 @@ License:	  ASL 2.0
 URL:		    https://github.com/openstack/tuskar
 Source0:	  https://pypi.python.org/packages/source/t/tuskar/tuskar-%{version}.tar.gz
 Source1:    openstack-tuskar-api.service
+
+Patch0:     0001-Synced-jsonutils-from-oslo-incubator.patch
 
 BuildArch:     noarch
 
@@ -55,6 +57,7 @@ data-center.
 
 %prep
 %setup -q -n tuskar-%{version}
+%patch0 -p1
 rm requirements.txt
 
 %build
@@ -114,6 +117,10 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Tue Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.1-1
+- new source 0.3.1 (jomara@redhat.com)
+- added jsonutils patch from oslo-incubator (jomara@redhat.com)
+
 * Wed Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.0-1
 - new source 0.3.0 (jomara@redhat.com)
 
