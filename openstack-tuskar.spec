@@ -1,6 +1,6 @@
 Name:	      openstack-tuskar
 Version:	  0.3.1
-Release:	  1%{?dist}
+Release:	  2%{?dist}
 Summary:	  A service for managing OpenStack deployments
 
 Group:		  Applications/System
@@ -9,7 +9,7 @@ URL:		    https://github.com/openstack/tuskar
 Source0:	  https://pypi.python.org/packages/source/t/tuskar/tuskar-%{version}.tar.gz
 Source1:    openstack-tuskar-api.service
 
-Patch0:     0001-Synced-jsonutils-from-oslo-incubator.patch
+Patch0:     0001-Don-t-show-image-parameters-to-user.patch
 
 BuildArch:     noarch
 
@@ -117,6 +117,9 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Tue Apr 29 2014 Jordan OMara <jomara@redhat.com> 0.3.1-2
+- incorrect previous patch, switched out (jomara@redhat.com)
+
 * Tue Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.1-1
 - new source 0.3.1 (jomara@redhat.com)
 - added jsonutils patch from oslo-incubator (jomara@redhat.com)

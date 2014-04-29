@@ -1,0 +1,41 @@
+From 40c447b68007cc2a763d8dbb1e85d9a783666c72 Mon Sep 17 00:00:00 2001
+From: Ladislav Smola <lsmola@redhat.com>
+Date: Thu, 3 Apr 2014 14:25:39 +0200
+Subject: [PATCH] Don't show image parameters to user
+
+-users should't not change these image parameters, otherwise it
+ would broke tuskar associations. So we should not show it to
+ them in UI. We want to use heat defaults.
+
+Change-Id: Ida7fe675167a052d4ac05b3d78efb7ae0b99c5c0
+---
+ tuskar/api/controllers/v1/overcloud.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/tuskar/api/controllers/v1/overcloud.py b/tuskar/api/controllers/v1/overcloud.py
+index d3654a0..81ced61 100644
+--- a/tuskar/api/controllers/v1/overcloud.py
++++ b/tuskar/api/controllers/v1/overcloud.py
+@@ -199,11 +199,17 @@ class OvercloudsController(rest.RestController):
+                         template_tools.OVERCLOUD_OBJECT_STORAGE_ROLE: 1}
+ 
+         # We don't want user to fill flavor based parameters, cause
+-        # it is already stored in OvercloudRoles
++        # it is already stored in OvercloudRoles, also Image parameters
++        # are expected to be default, otherwise our associations
++        # will not work.
+         except_parameters = ('OvercloudControlFlavor',
+                              'OvercloudComputeFlavor',
+                              'OvercloudBlockStorageFlavor',
+-                             'OvercloudSwiftStorageFlavor')
++                             'OvercloudSwiftStorageFlavor',
++                             'NovaImage',
++                             'notcomputeImage',
++                             'BlockStorageImage',
++                             'SwiftStorageImage',)
+ 
+         overcloud = template_tools.merge_templates(fixed_params)
+ 
+-- 
+1.8.1.4
+
