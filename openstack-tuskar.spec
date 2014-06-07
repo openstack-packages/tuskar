@@ -1,6 +1,6 @@
 Name:	      openstack-tuskar
 Version:	  0.3.1
-Release:	  2%{?dist}
+Release:	  3%{?dist}
 Summary:	  A service for managing OpenStack deployments
 
 Group:		  Applications/System
@@ -117,6 +117,9 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Tue Apr 29 2014 Jordan OMara <jomara@redhat.com> 0.3.1-2
 - incorrect previous patch, switched out (jomara@redhat.com)
 
