@@ -9,7 +9,6 @@ URL:		    https://github.com/openstack/tuskar
 Source0:	  https://pypi.python.org/packages/source/t/tuskar/tuskar-%{version}.tar.gz
 Source1:    openstack-tuskar-api.service
 
-Patch0:     0001-Don-t-show-image-parameters-to-user.patch
 
 BuildArch:     noarch
 
@@ -56,8 +55,7 @@ ensure SLAs, improve performance, and maximize utilization across the
 data-center.
 
 %prep
-%setup -q -n tuskar-%{version}
-%patch0 -p1
+%setup -q -n tuskar-%{upstream_version}
 rm requirements.txt
 
 %build
@@ -80,7 +78,6 @@ install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}
 
 # set scripts to be executable
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/common/service.py
-chmod +x %{buildroot}%{python2_sitelib}/tuskar/openstack/common/rootwrap/cmd.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/api.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/manager.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/dbsync.py
