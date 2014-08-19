@@ -77,11 +77,8 @@ install -d -m 755 %{buildroot}%{_unitdir}
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}
 
 # set scripts to be executable
-chmod +x %{buildroot}%{python2_sitelib}/tuskar/common/service.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/api.py
-chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/manager.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/dbsync.py
-chmod +x %{buildroot}%{python2_sitelib}/tuskar/openstack/common/rpc/zmq_receiver.py
 
 %files
 %doc LICENSE README.rst
@@ -91,7 +88,6 @@ chmod +x %{buildroot}%{python2_sitelib}/tuskar/openstack/common/rpc/zmq_receiver
 # binaries for tuskar
 %attr(0755, root, root) %{_bindir}/tuskar-api
 %attr(0755, root, root) %{_bindir}/tuskar-dbsync
-%attr(0755, root, root) %{_bindir}/tuskar-manager
 %attr(0755, root, root) %{_sharedstatedir}/tuskar
 %dir %attr(0755, root, root) %{_sysconfdir}/tuskar
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/tuskar/tuskar.conf
@@ -114,13 +110,16 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Tue Aug 19 2014 Derek Higgins <derekh@redhat.com> - XXX
+- Removed references to files that no longer exist
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
 * Tue Apr 29 2014 Jordan OMara <jomara@redhat.com> 0.3.1-2
 - incorrect previous patch, switched out (jomara@redhat.com)
 
-* Tue Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.1-1
+* Wed Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.1-1
 - new source 0.3.1 (jomara@redhat.com)
 - added jsonutils patch from oslo-incubator (jomara@redhat.com)
 
