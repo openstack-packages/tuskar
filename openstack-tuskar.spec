@@ -88,6 +88,7 @@ chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/dbsync.py
 # binaries for tuskar
 %attr(0755, root, root) %{_bindir}/tuskar-api
 %attr(0755, root, root) %{_bindir}/tuskar-dbsync
+%attr(0755, root, root) %{_bindir}/tuskar-load-roles
 %attr(0755, root, root) %{_sharedstatedir}/tuskar
 %dir %attr(0755, root, root) %{_sysconfdir}/tuskar
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/tuskar/tuskar.conf
@@ -110,6 +111,9 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Wed Aug 27 2014 Derek Higgins <derekh@redhat.com> - XXX
+- Added tuskar-load-roles
+
 * Tue Aug 19 2014 Derek Higgins <derekh@redhat.com> - XXX
 - Removed references to files that no longer exist
 
