@@ -93,6 +93,13 @@ chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/dbsync.py
 %dir %attr(0755, root, root) %{_sysconfdir}/tuskar
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/tuskar/tuskar.conf
 
+%pre
+getent group tuskar >/dev/null || groupadd -r tuskar
+getent passwd tuskar >/dev/null || \
+useradd -r -g tuskar -d %{_sharedstatedir}/tuskar -s /sbin/nologin \
+-c "OpenStack Tuskar Daemons" tuskar
+exit 0
+
 %post
 if [ $1 -eq 1 ] ; then
     # Initial installation
@@ -111,6 +118,9 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
+* Fri Oct 31 2014 Dan Prince <dprince@redhat.com> - XXX
+- Add tusker user/group.
+
 * Wed Aug 27 2014 Derek Higgins <derekh@redhat.com> - XXX
 - Added tuskar-load-roles
 
