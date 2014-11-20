@@ -1,6 +1,8 @@
+%global homedir %{_datadir}/tuskar
+
 Name:	      openstack-tuskar
-Version:	  0.3.1
-Release:	  3%{?dist}
+Version:      XXX
+Release:      XXX{?dist}
 Summary:	  A service for managing OpenStack deployments
 
 Group:		  Applications/System
@@ -8,7 +10,6 @@ License:	  ASL 2.0
 URL:		    https://github.com/openstack/tuskar
 Source0:	  https://pypi.python.org/packages/source/t/tuskar/tuskar-%{version}.tar.gz
 Source1:    openstack-tuskar-api.service
-
 
 BuildArch:     noarch
 
@@ -77,8 +78,10 @@ install -d -m 755 %{buildroot}%{_unitdir}
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}
 
 # set scripts to be executable
+chmod +x %{buildroot}%{python2_sitelib}/tuskar/common/service.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/api.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/dbsync.py
+chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/load_roles.py
 
 %files
 %doc LICENSE README.rst
@@ -89,14 +92,17 @@ chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/dbsync.py
 %attr(0755, root, root) %{_bindir}/tuskar-api
 %attr(0755, root, root) %{_bindir}/tuskar-dbsync
 %attr(0755, root, root) %{_bindir}/tuskar-load-roles
-%attr(0755, root, root) %{_sharedstatedir}/tuskar
-%dir %attr(0755, root, root) %{_sysconfdir}/tuskar
+%attr(0755, tuskar, tuskar) %{_sharedstatedir}/tuskar
+%dir %attr(0755, root, tuskar) %{_sysconfdir}/tuskar
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/tuskar/tuskar.conf
+# database
+%ghost %attr(0755, root, root) %{python2_sitelib}/tuskar/openstack/common/db/tuskar.sqlite
 
 %pre
+# Add the "tuskar" user and group
 getent group tuskar >/dev/null || groupadd -r tuskar
 getent passwd tuskar >/dev/null || \
-useradd -r -g tuskar -d %{_sharedstatedir}/tuskar -s /sbin/nologin \
+    useradd -r -g tuskar -d %{_sharedstatedir}/tuskar -s /sbin/nologin \
 -c "OpenStack Tuskar Daemons" tuskar
 exit 0
 
@@ -118,14 +124,11 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
-* Fri Oct 31 2014 Dan Prince <dprince@redhat.com> - XXX
-- Add tusker user/group.
+* Mon Oct 20 2014 Jordan OMara <jomara@redhat.com> 0.4.15-2
+- tuskar user (jomara@redhat.com)
 
-* Wed Aug 27 2014 Derek Higgins <derekh@redhat.com> - XXX
-- Added tuskar-load-roles
-
-* Tue Aug 19 2014 Derek Higgins <derekh@redhat.com> - XXX
-- Removed references to files that no longer exist
+* Thu Oct 16 2014 Jordan OMara <jomara@redhat.com> 0.4.15-1
+- new source 0.4.15 (jomara@redhat.com)
 
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
@@ -133,7 +136,7 @@ fi
 * Tue Apr 29 2014 Jordan OMara <jomara@redhat.com> 0.3.1-2
 - incorrect previous patch, switched out (jomara@redhat.com)
 
-* Wed Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.1-1
+* Tue Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.1-1
 - new source 0.3.1 (jomara@redhat.com)
 - added jsonutils patch from oslo-incubator (jomara@redhat.com)
 
