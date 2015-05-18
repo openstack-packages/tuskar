@@ -2,7 +2,7 @@
 
 Name:	      openstack-tuskar
 Version:      XXX
-Release:      XXX{?dist}
+Release:      XXX
 Summary:	  A service for managing OpenStack deployments
 
 Group:		  Applications/System
@@ -92,6 +92,9 @@ chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/load_roles.py
 %attr(0755, root, root) %{_bindir}/tuskar-api
 %attr(0755, root, root) %{_bindir}/tuskar-dbsync
 %attr(0755, root, root) %{_bindir}/tuskar-load-roles
+%attr(0755, root, root) %{_bindir}/tuskar-delete-roles
+%attr(0755, root, root) %{_bindir}/tuskar-load-role
+%attr(0755, root, root) %{_bindir}/tuskar-load-seed
 %attr(0755, tuskar, tuskar) %{_sharedstatedir}/tuskar
 %dir %attr(0755, root, tuskar) %{_sysconfdir}/tuskar
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/tuskar/tuskar.conf
@@ -124,73 +127,3 @@ if [ $1 -ge 1 ] ; then
 fi
 
 %changelog
-* Mon Oct 20 2014 Jordan OMara <jomara@redhat.com> 0.4.15-2
-- tuskar user (jomara@redhat.com)
-
-* Thu Oct 16 2014 Jordan OMara <jomara@redhat.com> 0.4.15-1
-- new source 0.4.15 (jomara@redhat.com)
-
-* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.1-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
-
-* Tue Apr 29 2014 Jordan OMara <jomara@redhat.com> 0.3.1-2
-- incorrect previous patch, switched out (jomara@redhat.com)
-
-* Tue Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.1-1
-- new source 0.3.1 (jomara@redhat.com)
-- added jsonutils patch from oslo-incubator (jomara@redhat.com)
-
-* Wed Apr 16 2014 Jordan OMara <jomara@redhat.com> 0.3.0-1
-- new source 0.3.0 (jomara@redhat.com)
-
-* Mon Apr 07 2014 Jordan OMara <jomara@redhat.com> 0.2.3-2
-- adding python-six & python-posix_ipc dep (jomara@redhat.com)
-
-* Fri Apr 04 2014 Jordan OMara <jomara@redhat.com> 0.2.3-1
-- new source 0.2.3 (jomara@redhat.com)
-
-* Thu Apr 03 2014 Jordan OMara <jomara@redhat.com> 0.2.2-3
-- remove wsgi, add post/preun/postun runs for systemctl
-- misc cleanup from additional reviews (jomara@redhat.com)
-
-* Tue Apr 01 2014 Jordan OMara <jomara@redhat.com> 0.2.2-2
-- __python --> __python2 (jomara@redhat.com)
-
-* Wed Mar 26 2014 Jordan OMara <jomara@redhat.com> 0.2.2-1
-- Fixing more rpmlint issues (jomara@redhat.com)
-
-* Fri Mar 14 2014 Jordan OMara <jomara@redhat.com> 0.1.0-3
-- Fixing various rpm issues (jomara@redhat.com)
-
-* Wed Feb 26 2014 Jordan OMara <jomara@redhat.com> 0.7-2
-- Adding PBR to buildrequires (jomara@redhat.com)
-
-* Wed Feb 19 2014 Jordan OMara <jomara@redhat.com> 0.7-1
-- Adding PBR to buildrequires (jomara@redhat.com)
-
-* Wed Feb 19 2014 Jordan OMara <jomara@redhat.com> 0.6-1
-- Removing %%configure block (jomara@redhat.com)
-
-* Wed Feb 19 2014 Jordan OMara <jomara@redhat.com> 0.5-1
-- Fixing tuskar prep location (jomara@redhat.com)
-
-* Wed Feb 19 2014 Jordan OMara <jomara@redhat.com> 0.4-1
-- Minor fixes for httpd.conf location (jomara@redhat.com)
-
-* Wed Feb 19 2014 Jordan OMara <jomara@redhat.com> 0.3-1
-- Automatic commit of package [openstack-tuskar] release [0.2-1].
-  (jomara@redhat.com)
-- Initialized to use tito. (jomara@redhat.com)
-- Initial commit of spec file, wsgi file and apache module for wsgi
-  (jomara@redhat.com)
-- Merge "Getting correct count and attributes from database"
-  (jenkins@review.openstack.org)
-- Merge "Fix tuskar docs building" (jenkins@review.openstack.org)
-- Fix tuskar docs building (jason.dobies@redhat.com)
-- Getting correct count and attributes from database (lsmola@redhat.com)
-
-* Wed Feb 19 2014 Jordan OMara <jomara@redhat.com> 0.2-1
-- new package built with tito
-
-* Wed Feb 19 2014 Jordan OMara <jomara@redhat.com> - 0.0.1-1
-- initial package
