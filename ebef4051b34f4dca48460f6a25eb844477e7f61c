@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a106d94_4c944ee8",
+        "filename": "openstack-tuskar.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2015-05-18T16:11:04Z",
+      "side": 1,
+      "message": "Just fixed the mess here coming from the past! ;-)",
+      "revId": "ebef4051b34f4dca48460f6a25eb844477e7f61c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
