@@ -92,6 +92,9 @@ chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/load_roles.py
 %attr(0755, root, root) %{_bindir}/tuskar-api
 %attr(0755, root, root) %{_bindir}/tuskar-dbsync
 %attr(0755, root, root) %{_bindir}/tuskar-load-roles
+%attr(0755, root, root) %{_bindir}/tuskar-delete-roles
+%attr(0755, root, root) %{_bindir}/tuskar-load-role
+%attr(0755, root, root) %{_bindir}/tuskar-load-seed
 %attr(0755, tuskar, tuskar) %{_sharedstatedir}/tuskar
 %dir %attr(0755, root, tuskar) %{_sysconfdir}/tuskar
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/tuskar/tuskar.conf
