@@ -13,7 +13,7 @@ Source1:       openstack-tuskar-api.service
 
 BuildArch:     noarch
 
-BuildRequires: systemd-devel
+BuildRequires: systemd
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-lockfile
@@ -43,9 +43,9 @@ Requires: python-keystoneclient
 Requires: python-heatclient
 Requires: openstack-tripleo-heat-templates
 
-Requires(post):   systemd-units
-Requires(preun):  systemd-units
-Requires(postun): systemd-units
+Requires(post):   systemd
+Requires(preun):  systemd
+Requires(postun): systemd
 
 %description
 Tuskar gives administrators the ability to control how and where OpenStack
