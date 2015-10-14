@@ -83,6 +83,9 @@ chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/api.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/dbsync.py
 chmod +x %{buildroot}%{python2_sitelib}/tuskar/cmd/load_roles.py
 
+# Delete tests
+rm -fr %{buildroot}%{python_sitelib}/tuskar/tests
+
 %files
 %doc LICENSE README.rst
 %{python2_sitelib}/tuskar
