@@ -1,0 +1,7 @@
+Verified+1: rdo-ci-jenkins <whayutin+rdocijenkins@redhat.com>
+Code-Review+2: Alan Pevec <alan.pevec@redhat.com>
+Submitted-by: Alan Pevec <alan.pevec@redhat.com>
+Submitted-at: Sat, 12 Dec 2015 01:28:28 +0100
+Reviewed-on: https://review.gerrithub.io/249035
+Project: openstack-packages/tuskar
+Branch: refs/heads/rpm-master
